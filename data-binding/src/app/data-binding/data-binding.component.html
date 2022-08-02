@@ -1,0 +1,50 @@
+<section class="property-binding">
+
+<!--    <article>
+        <h3>Interpolação</h3>
+        <p>String com Interpolação: {{ url }}</p>
+        <p>A soma de 1 + 1 não é dois: {{ 1 + 1 + getValor() }}</p>
+    </article>
+
+    <article>
+        <h2>Property Binding</h2>
+        <img src="{{ urlImagem }}">
+        <img [src]="urlImagem">
+
+    </article>  -->
+
+    <article>
+        <h3>Class e Style</h3>
+        <div>
+            Selecione uma classe
+            <select #classe (change)="0">
+                <option value="alert-success">Success</option>
+                <option value="alert-info">Info</option>
+                <option value="alert-warning">Warning</option>
+                <option value="alert-danger">Danger</option>
+            </select>
+            <br><br>
+
+            <div class="alert {{ classe.value }}" role="alert">
+                Texto colorido de acordo com o alerta
+            </div>
+
+            <div class="alert" role="alert"
+                [class.alert-success]="classe.value == 'alert-success'">Success</div>
+            <div class="alert" role="alert"
+                [class.alert-info]="classe.value == 'alert-info'">Info</div>
+            <div class="alert" role="alert"
+                [class.alert-warning]="classe.value == 'alert-warning'">Warning</div>
+            <div class="alert" role="alert"
+                [class.alert-danger]="classe.value == 'alert-danger'">Danger</div>
+
+            <div class="alert alert-danger" role="alert"
+                [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'"
+                >Aparece somente se for alerta de erro 
+            </div>
+        </div>
+    </article>
+
+
+
+</section>
