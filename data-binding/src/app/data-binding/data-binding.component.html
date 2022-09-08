@@ -1,6 +1,6 @@
-<section class="property-binding">
+<!--<section class="property-binding">
 
-<!--    <article>
+    <article>
         <h3>Interpolação</h3>
         <p>String com Interpolação: {{ url }}</p>
         <p>A soma de 1 + 1 não é dois: {{ 1 + 1 + getValor() }}</p>
@@ -44,9 +44,10 @@
             </div>
         </div>
     </article>
--->   
+ 
 </section>
-
+-->
+<!--
 <section class="event-binding">
     <article>
         <h3>Event binding</h3>
@@ -73,4 +74,30 @@
         </div>
     </article>
 
+</section>
+-->
+<!--
+<section class="two-way-binding">
+    <article>
+        <h3>Two-Way Data Binding</h3>
+        <div>
+            <input type="text"
+             [(ngModel)]="nome"             
+             />
+
+             <p>Voce digitou: {{ nome }}</p>
+        </div>
+        <div>
+            <input type="text" [(ngModel)]="pessoa.nome"/>
+            <input type="text" [(ngModel)]="pessoa.idade"/>
+            <p>Meu nome é {{ pessoa.nome }} e minha idade é {{ pessoa.idade }} anos</p>
+        </div>
+    </article>
+</section>
+-->
+<section class="input-output-properties">
+    <article>
+        <h3>Input/Output Porperties</h3>
+        <app-curso [nome]="nomeDoCurso"></app-curso>
+    </article>
 </section>

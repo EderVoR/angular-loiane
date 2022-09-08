@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputPropertyComponent } from './input-property/input-property.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataBindingComponent
+    DataBindingComponent,
+    InputPropertyComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

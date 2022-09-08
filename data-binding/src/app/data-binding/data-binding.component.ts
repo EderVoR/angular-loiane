@@ -23,6 +23,15 @@ export class DataBindingComponent implements OnInit {
   valorSalvo: string = '';
   isMouseOver: boolean = false;
 
+  nome: string = 'abc';
+
+  pessoa = {
+    nome: 'def',
+    idade: 20
+  }
+
+  nomeDoCurso: string = 'Angular';
+
   salvarValor(valor: any){
     var elemento = valor as HTMLInputElement;
     this.valorSalvo = elemento.value;
