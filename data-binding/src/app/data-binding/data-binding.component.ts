@@ -32,6 +32,8 @@ export class DataBindingComponent implements OnInit {
 
   nomeDoCurso: string = 'Angular';
 
+  valorInicial = 15;
+
   salvarValor(valor: any){
     var elemento = valor as HTMLInputElement;
     this.valorSalvo = elemento.value;
@@ -56,6 +58,11 @@ export class DataBindingComponent implements OnInit {
   onKeyUp(evento: KeyboardEvent){
     console.log();
     this.valorAtual = (<HTMLInputElement>evento.target).value;
+  }
+
+  onMudouValor(evento: any)
+  {
+    console.log(evento.novoValor);
   }
 
   constructor() { }
