@@ -5,12 +5,14 @@ import { CursosService } from './cursos/cursos.service';
 import { AppComponent } from './app.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { CriarCursoComponent } from './criar-curso/criar-curso.component';
+import { ReceberCursoCriadoComponent } from './receber-curso-criado/receber-curso-criado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CursosComponent,
-    CriarCursoComponent
+    CriarCursoComponent,
+    ReceberCursoCriadoComponent
   ],
   imports: [
     BrowserModule
