@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ExemplosPipesComponent implements OnInit {
 
 	livro: any = {
-		titulo: 'Lógica de Programação',
+		titulo: 'logica de programação',
 		rating: 4.54321,
 		numeroPaginas: 347,
 		preco: 44.99,
