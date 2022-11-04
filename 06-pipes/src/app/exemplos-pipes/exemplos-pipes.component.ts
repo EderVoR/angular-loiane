@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectableObservable } from 'rxjs';
 
 @Component({
   selector: 'app-exemplos-pipes',
@@ -15,6 +16,14 @@ export class ExemplosPipesComponent implements OnInit {
 		dataLancamento: new Date(2016, 5, 23),
 		url: 'www.google.com.br'
 	};
+
+	livros: string[] = ['Angular', 'Java']
+
+	filtro?: string;
+
+	addCurso(valor: string){
+		this.livros.push(valor);
+	}
 
   constructor() { }
 
