@@ -10,11 +10,13 @@ import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso
 import { CursoDetalheComponent } from './cursos/curso-detalhe/curso-detalhe.component';*/
 
 const appRouter: Routes = [
+	{ path: 'cursos', loadChildren: () => import('./cursos/cursos.module').then(c => c.CursosModule) },
+	{ path: 'alunos', loadChildren: () => import('./alunos/alunos.module').then(a => a.AlunosModule) },
   //{path: 'cursos', component: CursosComponent},
   //{path: 'curso/:id', component: CursoDetalheComponent},
   //{path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
-  {path: 'login', component: LoginComponent},
-  {path: '', component: HomeComponent}
+  { path: 'login', component: LoginComponent },
+  { path: '', component: HomeComponent }
 ]
 
 export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(appRouter);
