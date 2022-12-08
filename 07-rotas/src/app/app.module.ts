@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,6 +13,7 @@ import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso
 import { AppRoutingModule } from './app.routing.module';
 //import { CursosModule } from './cursos/cursos.module';
 //import { AlunosModule } from './alunos/alunos.module';
+import { AuthService } from './login/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { AppRoutingModule } from './app.routing.module';
   ],
   imports: [
     BrowserModule,
+	FormsModule,
     //CursosModule,
 	//AlunosModule,
     AppRoutingModule
 //    routing
   ],
+	providers: [AuthService],
   //providers: [CursosService],
   bootstrap: [AppComponent]
 })
