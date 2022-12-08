@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AlunosService } from './../alunos.service';
 import { Subscription } from 'rxjs';
@@ -16,9 +16,14 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
 
   constructor(
 	private route: ActivatedRoute,
+	private router: Router,
 	private alunosService: AlunosService
   ) {
 	this.inscricao = Subscription.EMPTY
+  }
+
+  editarContato(){
+	this.router.navigate(['/alunos', this.aluno.id, 'editar']);
   }
 
   ngOnInit(): void {
