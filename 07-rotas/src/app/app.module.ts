@@ -1,3 +1,4 @@
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,7 +23,8 @@ import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso
 	declarations: [
 		AppComponent,
 		HomeComponent,
-		LoginComponent
+		LoginComponent,
+		PaginaNaoEncontradaComponent
 		/*CursosComponent,
 		CursoDetalheComponent,
 		CursoNaoEncontradoComponent*/

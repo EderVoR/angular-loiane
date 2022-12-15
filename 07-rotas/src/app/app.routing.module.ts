@@ -1,3 +1,4 @@
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { CursosGuard } from './guards/cursos.guard';
 import { NgModule, ModuleWithProviders } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
@@ -27,10 +28,13 @@ const appRouter: Routes = [
 	//{path: 'curso/:id', component: CursoDetalheComponent},
 	//{path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
 	{ path: 'login', component: LoginComponent },
-	{ path: '',
+	{ path: 'home',
 		component: HomeComponent,
 		canActivate: [AuthGuard]
-	}
+	},
+	{ path: '', redirectTo: '/home', pathMatch: 'full'},
+	{ path: '**', component: PaginaNaoEncontradaComponent }
+
 ]
 
 export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(appRouter);
