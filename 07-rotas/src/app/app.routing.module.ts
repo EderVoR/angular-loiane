@@ -40,7 +40,7 @@ const appRouter: Routes = [
 export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(appRouter);
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRouter)],
+  imports: [RouterModule.forRoot(appRouter, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule{
