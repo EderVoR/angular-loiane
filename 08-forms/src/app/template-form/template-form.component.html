@@ -21,8 +21,7 @@
 					Email invalido.
 				</div>
 			</div>
-
-			<button type="submit" class="btn btn-primary">Enviar</button>
+			<button [disabled]="!f.valid" type="submit" class="btn btn-primary">Enviar</button>
 		</form>
 	</div>
 </div>
