@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
-import { disableDebugTools } from '@angular/platform-browser';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-template-form',
@@ -16,39 +15,50 @@ export class TemplateFormComponent implements OnInit {
 	}
 
 	onSubmit(form: any){
-		console.log(form.value);
+		//console.log(form.value);
+		this.http.post('enderecoservidor/formUsuario', JSON.stringify(form.value))
+			.subscribe(dados => console.log(dados));
 	}
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-  }
-
-  verificaValidade(campo: any){
-	return !campo.valid && campo.touched
-  }
-
-  aplicaCssErro(campo: any){
-	return {
-		'is-invalid': this.verificaValidade(campo)
+	ngOnInit(): void {
 	}
-  }
 
-  consultaCEP(cep?: any, form?: any){
-	//Remove digitos não numericos
-	cep = cep.replace(/\D/g, '');
+	verificaValidade(campo: any){
+		return !campo.valid && campo.touched
+	}
 
-	//Verifica se campo CEP possui valor informado
-	if(cep != ""){
-		var validacao = /^[0-9]{8}$/;
+	aplicaCssErro(campo: any){
+		return {
+			'is-invalid': this.verificaValidade(campo)
+		}
+	}
 
-		if(validacao.test(cep)){
-			this.resetaForm(form);
-			this.http.get(`//viacep.com.br/ws/${cep}/json`)
-			.subscribe((dados: any) => this.populaDadosForm(dados, form));
+  	consultaCEP(cep?: any, form?: any){
+		//Remove digitos não numericos
+		cep = cep.replace(/\D/g, '');
+
+		//Verifica se campo CEP possui valor informado
+		if(cep != ""){
+			var validacao = /^[0-9]{8}$/;
+
+			if(validacao.test(cep)){
+				this.resetaForm(form);
+				this.http.get(`//viacep.com.br/ws/${cep}/json`)
+				.subscribe((dados: any) => this.populaDadosForm(dados, form));
+			}
+			else{
+				alert("CEP não localizado!");
+				form.form.patchValue({
+					endereco: {
+						cep: null
+					}
+				})
+			}
 		}
 		else{
-			alert("CEP não localizado!");
+			alert("CEP inválido!");
 			form.form.patchValue({
 				endereco: {
 					cep: null
@@ -56,17 +66,8 @@ export class TemplateFormComponent implements OnInit {
 			})
 		}
 	}
-	else{
-		alert("CEP inválido!");
-		form.form.patchValue({
-			endereco: {
-				cep: null
-			}
-		})
-	}
-  }
 
-  populaDadosForm(dados: any, form: any){
+	populaDadosForm(dados: any, form: any){
 	/*form.setValue({
 		nome: form.value.nome,
 		email: form.value.email,
@@ -90,7 +91,7 @@ export class TemplateFormComponent implements OnInit {
 			estado: dados.uf
 		}
 	})
-  }
+	}
 
 	resetaForm(formulario: any){
 		formulario.form.patchValue({
@@ -103,5 +104,4 @@ export class TemplateFormComponent implements OnInit {
 			}
 		});
 	}
-
 }
