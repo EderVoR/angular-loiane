@@ -14,10 +14,10 @@ import { TemplateFormModule } from './template-form/template-form.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-	FormsModule,
-	TemplateFormModule,
-	ReactiveFormsModule,
-	DataFormModule
+    FormsModule,
+    TemplateFormModule,
+    ReactiveFormsModule,
+    DataFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]
