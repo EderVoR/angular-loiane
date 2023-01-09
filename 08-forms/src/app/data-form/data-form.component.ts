@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DataFormComponent implements OnInit {
 
 	formulario!: FormGroup;
+
+	@Input() mostrarErro: boolean = false;
+	@Input() msgErro?: string;
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -41,5 +44,15 @@ export class DataFormComponent implements OnInit {
   resetar(){
 	this.formulario.reset();
   }
+
+	verificaValidade(campo: any){
+		return !this.formulario.get(campo)?.valid && this.formulario.get(campo)?.touched
+	}
+
+	aplicaCssErro(campo: any){
+		return {
+			'is-invalid': this.verificaValidade(campo)
+		}
+	}
 
 }
