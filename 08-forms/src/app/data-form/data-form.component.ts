@@ -67,7 +67,9 @@ export class DataFormComponent implements OnInit {
 		}
 	}
 
-	consultaCEP(cep?: any, form?: any){
+	consultaCEP(){
+
+		let cep = this.formulario.get('endereco.cep')?.value;
 		//Remove digitos não numericos
 		cep = cep.replace(/\D/g, '');
 
@@ -76,13 +78,13 @@ export class DataFormComponent implements OnInit {
 			var validacao = /^[0-9]{8}$/;
 
 			if(validacao.test(cep)){
-				this.resetaForm(form);
+				this.resetaForm();
 				this.http.get(`//viacep.com.br/ws/${cep}/json`)
-				.subscribe((dados: any) => this.populaDadosForm(dados, form));
+				.subscribe((dados: any) => this.populaDadosForm(dados));
 			}
 			else{
 				alert("CEP não localizado!");
-				form.form.patchValue({
+				this.formulario.patchValue({
 					endereco: {
 						cep: null
 					}
@@ -91,7 +93,7 @@ export class DataFormComponent implements OnInit {
 		}
 		else{
 			alert("CEP inválido!");
-			form.form.patchValue({
+			this.formulario.patchValue({
 				endereco: {
 					cep: null
 				}
@@ -99,8 +101,8 @@ export class DataFormComponent implements OnInit {
 		}
 	}
 
-	resetaForm(formulario: any){
-		formulario.form.patchValue({
+	resetaForm(){
+		this.formulario.patchValue({
 			endereco: {
 				rua: null,
 				complemento: null,
@@ -111,7 +113,7 @@ export class DataFormComponent implements OnInit {
 		});
 	}
 
-	populaDadosForm(dados: any, form: any){
+	populaDadosForm(dados: any){
 		/*form.setValue({
 			nome: form.value.nome,
 			email: form.value.email,
@@ -126,7 +128,7 @@ export class DataFormComponent implements OnInit {
 			}
 		});*/
 
-		form.form.patchValue({
+		this.formulario.patchValue({
 			endereco: {
 					rua: dados.logradouro,
 					complemento: dados.complemento,
