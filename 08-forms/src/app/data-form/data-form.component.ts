@@ -44,13 +44,30 @@ export class DataFormComponent implements OnInit {
   }
 
 	onSubmit(){
-	//console.log(this.formulario.value);
 
-		this.http.post('enderecoservidor/formUsuario', JSON.stringify(this.formulario.value))
+		if(this.formulario.valid)
+		{
+			this.http.post('enderecoservidor/formUsuario', JSON.stringify(this.formulario.value))
 			.subscribe(dados => {
 				console.log(dados);
 				this.formulario.reset();
 			});
+		}
+		else{
+			console.log("Formulario invalido")
+			this.verificaValidacaoForm(this.formulario);
+		}
+	}
+
+	verificaValidacaoForm(formGroup: FormGroup){
+		Object.keys(formGroup.controls).forEach(campo  => {
+			const controle = formGroup.get(campo);
+			controle?.markAsDirty();
+
+			if(controle instanceof FormGroup){
+				this.verificaValidacaoForm(controle);
+			}
+		})
 	}
 
 	resetar(){
@@ -58,7 +75,7 @@ export class DataFormComponent implements OnInit {
 	}
 
 	verificaValidade(campo: string){
-		return !this.formulario.get(campo)?.valid && this.formulario.get(campo)?.touched
+		return !this.formulario.get(campo)?.valid && (this.formulario.get(campo)?.touched || this.formulario.get(campo)?.dirty)
 	}
 
 	aplicaCssErro(campo: string){
@@ -70,6 +87,7 @@ export class DataFormComponent implements OnInit {
 	consultaCEP(){
 
 		let cep = this.formulario.get('endereco.cep')?.value;
+
 		//Remove digitos não numericos
 		cep = cep.replace(/\D/g, '');
 
@@ -135,8 +153,7 @@ export class DataFormComponent implements OnInit {
 					bairro: dados.bairro,
 					cidade: dados.localidade,
 					estado: dados.uf
-				}
-			})
-		}
-
+			}
+		})
+	}
 }
