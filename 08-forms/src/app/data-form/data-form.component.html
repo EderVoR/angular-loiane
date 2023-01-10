@@ -9,8 +9,8 @@
 					required [ngClass]="aplicaCssErro('nome')">
 			</div>
 			<app-campo-control-erro
-					[mostrarErro]="verificaValidade('nome')"
-					msgErro="Nome é obrigatório">
+				[mostrarErro]="verificaValidade('nome')"
+				msgErro="Nome é obrigatório">
 			</app-campo-control-erro>
 		</div>
 		<div class="row">
@@ -19,46 +19,44 @@
 			</div>
 			<div class="col-sm-12">
 				<input type="email" class="form-control" formControlName="email" placeholder="nome@email.com"
-				name="email" required email [ngClass]="aplicaCssErro('email')">
+					name="email" required email [ngClass]="aplicaCssErro('email')">
 			</div>
 			<app-campo-control-erro
-					[mostrarErro]="verificaValidade('email')"
-					msgErro="Email é obrigatório">
+				[mostrarErro]="verificaValidade('email')"
+				msgErro="Email é obrigatório">
 			</app-campo-control-erro>
 		</div>
-		<!--div ngModelGroup="endereco">
+		<div formGroupName="endereco">
 			<div class="row">
 				<div class="col-sm-3">
 					<label for="cep" class="form-label">CEP</label>
-					<input type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel"
-					[ngClass]="aplicaCssErro(cep)"
-					(blur)="consultaCEP(cep.value, f)">
+					<input type="text" class="form-control" id="cep" formControlName="cep" name="cep" [ngClass]="aplicaCssErro('endereco.cep')">
 					<app-campo-control-erro
-						[mostrarErro]="verificaValidade(cep)"
+						[mostrarErro]="verificaValidade('endereco.cep')"
 						msgErro="CEP é obrigatório">
 					</app-campo-control-erro>
 				</div>
 				<div class="col-sm-3">
 					<label for="numero" class="form-label">Número</label>
-					<input type="text" class="form-control" id="numero" name="numero" ngModel required #numero="ngModel"
-					[ngClass]="aplicaCssErro(numero)">
+					<input type="text" class="form-control" id="numero" formControlName="numero" name="numero" required
+						[ngClass]="aplicaCssErro('endereco.numero')">
 					<app-campo-control-erro
-						[mostrarErro]="verificaValidade(numero)"
-						msgErro="Número é obrigatório">
-					</app-campo-control-erro>
+							[mostrarErro]="verificaValidade('endereco.numero')"
+							msgErro="Número é obrigatório">
+						</app-campo-control-erro>
 				</div>
 				<div class="col-sm-6">
 					<label for="complemento" class="form-label">Complemento</label>
-					<input type="text" class="form-control" id="complemento" name="complemento" ngModel #complemento="ngModel">
+					<input type="text" class="form-control" id="complemento" formControlName="complemento" name="complemento">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
 					<label for="rua" class="form-label">Rua</label>
-					<input type="text" class="form-control" id="rua" name="rua" ngModel #rua="ngModel" readonly required
-					[ngClass]="aplicaCssErro(rua)">
+					<input type="text" class="form-control" id="rua" formControlName="rua" name="rua" readonly required
+					[ngClass]="aplicaCssErro('endereco.rua')">
 					<app-campo-control-erro
-						[mostrarErro]="verificaValidade(rua)"
+						[mostrarErro]="verificaValidade('endereco.rua')"
 						msgErro="Rua é obrigatório">
 					</app-campo-control-erro>
 				</div>
@@ -66,33 +64,34 @@
 			<div class="row">
 				<div class="col-sm-5">
 					<label for="bairro" class="form-label">Bairro</label>
-					<input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel" readonly
-					[ngClass]="aplicaCssErro(bairro)">
+					<input type="text" class="form-control" id="bairro" formControlName="bairro" name="bairro" required readonly
+					[ngClass]="aplicaCssErro('endereco.bairro')">
 					<app-campo-control-erro
-						[mostrarErro]="verificaValidade(bairro)"
+						[mostrarErro]="verificaValidade('endereco.bairro')"
 						msgErro="Bairro é obrigatório">
 					</app-campo-control-erro>
 				</div>
 				<div class="col-sm-4">
 					<label for="cidade" class="form-label">Cidade</label>
-					<input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel" readonly
-					[ngClass]="aplicaCssErro(cidade)">
+					<input type="text" class="form-control" id="cidade" formControlName="cidade" name="cidade" required readonly
+					[ngClass]="aplicaCssErro('endereco.cidade')">
 					<app-campo-control-erro
-						[mostrarErro]="verificaValidade(cidade)"
+						[mostrarErro]="verificaValidade('endereco.cidade')"
 						msgErro="Cidade é obrigatório">
 					</app-campo-control-erro>
 				</div>
 				<div class="col-sm-3">
 					<label for="estado" class="form-label">Estado</label>
-					<input type="text" class="form-control" id="estado" name="estado" ngModel #estado="ngModel" readonly required=""
-					[ngClass]="aplicaCssErro(estado)">
+					<input type="text" class="form-control" id="estado" name="estado" formControlName="estado" readonly required=""
+					[ngClass]="aplicaCssErro('endereco.estado')">
 					<app-campo-control-erro
-						[mostrarErro]="verificaValidade(estado)"
+						[mostrarErro]="verificaValidade('endereco.estado')"
 						msgErro="Estado é obrigatório">
 					</app-campo-control-erro>
 				</div>
 			</div>
-		</div-->
+		</div>
+
 		<div style="margin:10px" class="col-sm-12">
 			<button type="submit" class="btn btn-primary">Enviar</button>
 			<button  (click)="resetar()" class="btn btn-danger">Cancelar</button>
